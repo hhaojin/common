@@ -8,6 +8,9 @@
 
 require "./vendor/autoload.php";
 
+$res = \Timor\mapping(new \Timor\Test(), ["b" => 4]);
+
+
 $obj = new \Timor\MultiArray();
 $a = [
     [
