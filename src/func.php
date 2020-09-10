@@ -27,9 +27,7 @@ if (!function_exists("mapping")) {
         if (is_string($obj)) {
             $obj = new $obj;
         }
-        $loader = require __DIR__ . "/../vendor/autoload.php";
-        AnnotationRegistry::registerLoader([$loader, 'loadClass']);
-
+        loadAnnotaionFiles();
         $reader = new AnnotationReader();
         try {
             $properties = (new \ReflectionClass($obj))->getProperties();
@@ -47,8 +45,19 @@ if (!function_exists("mapping")) {
             }
             return $arr;
         } catch (\Exception $e) {
-
             return $arr;
+        }
+    }
+}
+
+if (!function_exists("loadAnnotaionFiles")) {
+    function loadAnnotaionFiles()
+    {
+        $annotationFiles = glob(dirname(__DIR__) . "/src/Annotation/*.php");
+        if (is_array($annotationFiles)) {
+            foreach ($annotationFiles as $annotationFile) {
+                AnnotationRegistry::registerFile($annotationFile);
+            }
         }
     }
 }

@@ -8,9 +8,17 @@
 
 require "./vendor/autoload.php";
 
-$res = \Timor\mapping(new \Timor\Test(), ["b" => 4]);
+class Test {
+    /** @\Timor\Annotation\Mapping(key="xxx") */
+    private $a;
+    private $b;
 
+}
 
+$res = \Timor\mapping(new Test(), ["b" => 4]);
+
+var_dump($res);
+die;
 $obj = new \Timor\MultiArray();
 $a = [
     [
