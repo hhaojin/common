@@ -9,8 +9,10 @@
 require "./vendor/autoload.php";
 
 class Test {
-    /** @\Timor\Annotation\Mapping(key="xxx") */
-    private $a;
+
+    /** @\Timor\Annotation\Mapping(key="xafas") */
+    private $a = 666;
+
     private $b;
 
 }
